@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://crj4b5jx3st8i"]
+
+[ext_resource type="Texture2D" uid="uid://twuac76cjsga" path="res://Textures/Player/Attack/pixel_art_sword_slash_sprites.png" id="1_1in6v"]
+[ext_resource type="Script" uid="uid://cj5q4a67bolt0" path="res://Player/Attack/sword_slash.gd" id="1_5ity3"]
+
+[sub_resource type="Animation" id="Animation_5ity3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sxx2i"]
+resource_name = "sword_slash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099971116, 0.29820445),
+"transitions": PackedFloat32Array(-2, 1, -2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(2, 2), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 2, 15.45491),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.29991335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dwvd"]
+_data = {
+&"RESET": SubResource("Animation_5ity3"),
+&"sword_slash": SubResource("Animation_sxx2i")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxx2i"]
+size = Vector2(113.25, 81)
+
+[node name="sword_slash" type="Node2D" unique_id=20877942]
+script = ExtResource("1_5ity3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=312190585]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+texture = ExtResource("1_1in6v")
+offset = Vector2(25, 0)
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327170696]
+libraries/ = SubResource("AnimationLibrary_4dwvd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=486809426]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1924882428]
+position = Vector2(52.375, -9)
+shape = SubResource("RectangleShape2D_sxx2i")
+disabled = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

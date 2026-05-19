@@ -64,3 +64,15 @@ playback_auto_capture_duration = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=122107974]
 position = Vector2(3, -14)
 shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="Attack" type="Node2D" parent="." unique_id=994340914]
+
+[node name="SwordTimer" type="Timer" parent="Attack" unique_id=1020680674]
+unique_name_in_owner = true
+
+[node name="SwordAttackTimer" type="Timer" parent="Attack/SwordTimer" unique_id=2041374505]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[connection signal="timeout" from="Attack/SwordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="Attack/SwordTimer/SwordAttackTimer" to="." method="_on_sword_attack_timer_timeout"]
