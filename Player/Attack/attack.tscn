@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgl2w6ertjsa6"]
+
+[ext_resource type="Script" uid="uid://iqr4y7rqw2db" path="res://Player/Attack/attack.gd" id="1_e4uv8"]
+
+[node name="Attack" type="Node2D" unique_id=1627908860]
+script = ExtResource("1_e4uv8")
+
+[node name="SwordTimer" type="Timer" parent="." unique_id=822070467]
+unique_name_in_owner = true
+
+[node name="SwordAttackTimer" type="Timer" parent="SwordTimer" unique_id=1408166920]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[connection signal="timeout" from="SwordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="SwordTimer/SwordAttackTimer" to="." method="_on_sword_attack_timer_timeout"]

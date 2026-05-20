@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dityj3ticaxth" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://jek17fklkba1" path="res://Textures/Player/Red Knight.png" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://dgl2w6ertjsa6" path="res://Player/Attack/attack.tscn" id="3_btcbx"]
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 length = 0.001
@@ -45,7 +46,7 @@ _data = {
 radius = 12.0
 height = 60.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1525461716]
+[node name="Player" type="CharacterBody2D" unique_id=1525461716 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_4ntmi")
 
@@ -65,14 +66,4 @@ playback_auto_capture_duration = 0.0
 position = Vector2(3, -14)
 shape = SubResource("CapsuleShape2D_4ntmi")
 
-[node name="Attack" type="Node2D" parent="." unique_id=994340914]
-
-[node name="SwordTimer" type="Timer" parent="Attack" unique_id=1020680674]
-unique_name_in_owner = true
-
-[node name="SwordAttackTimer" type="Timer" parent="Attack/SwordTimer" unique_id=2041374505]
-unique_name_in_owner = true
-wait_time = 0.075
-
-[connection signal="timeout" from="Attack/SwordTimer" to="." method="_on_sword_timer_timeout"]
-[connection signal="timeout" from="Attack/SwordTimer/SwordAttackTimer" to="." method="_on_sword_attack_timer_timeout"]
+[node name="Attack" parent="." unique_id=1627908860 instance=ExtResource("3_btcbx")]
