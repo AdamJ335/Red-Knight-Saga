@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhfw2iot01dvr"]
+
+[ext_resource type="Texture2D" uid="uid://dl8jdqosgften" path="res://Textures/Enemy/turnip.png" id="1_2pb1h"]
+[ext_resource type="Script" uid="uid://d4penvq6ia1" path="res://Enemy/enemy.gd" id="1_px1sc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pb1h"]
+radius = 15.033297
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1802732886]
+script = ExtResource("1_px1sc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=677839058]
+position = Vector2(1.0000001, -12.000001)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_2pb1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1975428480]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_2pb1h")
