@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var weapon_damage = 1
+@export var weapon_damage = 5
 @export var base_offset: Vector2 = Vector2(85, 0)
 
 var sword_slash_preload = preload("res://Player/Attack/sword_slash.tscn")
