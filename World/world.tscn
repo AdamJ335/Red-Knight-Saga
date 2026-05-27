@@ -19,7 +19,7 @@ region_rect = Rect2(-10000, -10000, 10000, 10000)
 
 [node name="Player" parent="." unique_id=1525461716 instance=ExtResource("2_8a836")]
 position = Vector2(0, 3)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.6, 0.6)
 
 [node name="Enemy" parent="." unique_id=1802732886 instance=ExtResource("3_j8job")]
 position = Vector2(412, -94)

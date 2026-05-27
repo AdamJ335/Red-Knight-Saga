@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://qdeo6oxmpeg2"]
+
+[ext_resource type="Script" uid="uid://cswmvdyaspbmk" path="res://World/dungeon.gd" id="1_j42sb"]
+[ext_resource type="PackedScene" uid="uid://bfb7mvlshreq3" path="res://Player/player.tscn" id="2_1vvix"]
+[ext_resource type="PackedScene" uid="uid://cyas8hj5fx21e" path="res://World/dungeon_generation.tscn" id="3_rltpi"]
+
+[node name="Dungeon" type="Node2D" unique_id=1961838138]
+script = ExtResource("1_j42sb")
+
+[node name="Player" parent="." unique_id=1525461716 instance=ExtResource("2_1vvix")]
+position = Vector2(0, 3)
+scale = Vector2(0.6, 0.6)
+
+[node name="DungeonGeneration" parent="." unique_id=456291520 instance=ExtResource("3_rltpi")]
+
+[connection signal="generation_completed" from="DungeonGeneration" to="." method="_on_dungeon_generation_generation_completed"]
